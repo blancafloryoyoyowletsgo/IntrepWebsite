@@ -42,11 +42,93 @@ footer{text-align:center;padding:25px;color:var(--m);font-size:12px}@media(max-w
 <div class="field"><label>Username / Email</label><input id="ru"></div>
 <div class="field"><label>Password</label><input id="rp" type="password" placeholder="At least 6 characters"></div>
 
-<label><b>Account type</b></label>
-<div class="rolegrid">
-<button type="button" id="er" class="role" onclick="role('employer')">🏢<br><b>Employer</b><br><span class="muted">Post jobs & find workers</span></button>
-<button type="button" id="ee" class="role" onclick="role('employee')">👷<br><b>Employee</b><br><span class="muted">Worker profile & job search</span></button>
+<!-- ROLE SELECTION -->
+<div class="role-options">
+  <button
+    type="button"
+    id="employerRoleBtn"
+    class="role"
+    aria-pressed="false">
+    <span>🏢</span>
+    <strong>Employer</strong>
+    <small>I want to hire workers</small>
+  </button>
+
+  <button
+    type="button"
+    id="employeeRoleBtn"
+    class="role"
+    aria-pressed="false">
+    <span>👷</span>
+    <strong>Employee</strong>
+    <small>I want to find work</small>
+  </button>
 </div>
+
+<script>
+/* =========================================================
+   ROLE SELECTION FIX
+   ========================================================= */
+
+let selectedRole = null;
+
+document.addEventListener("DOMContentLoaded", function () {
+    const employerBtn = document.getElementById("employerRoleBtn");
+    const employeeBtn = document.getElementById("employeeRoleBtn");
+
+    if (!employerBtn || !employeeBtn) {
+        console.error("Role buttons were not found.");
+        return;
+    }
+
+    employerBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        selectRole("employer");
+    });
+
+    employeeBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        selectRole("employee");
+    });
+});
+
+function selectRole(roleName) {
+    selectedRole = roleName;
+
+    const employerBtn = document.getElementById("employerRoleBtn");
+    const employeeBtn = document.getElementById("employeeRoleBtn");
+
+    if (!employerBtn || !employeeBtn) return;
+
+    employerBtn.classList.toggle("selected", roleName === "employer");
+    employeeBtn.classList.toggle("selected", roleName === "employee");
+
+    employerBtn.setAttribute(
+        "aria-pressed",
+        roleName === "employer" ? "true" : "false"
+    );
+
+    employeeBtn.setAttribute(
+        "aria-pressed",
+        roleName === "employee" ? "true" : "false"
+    );
+
+    const notice = document.getElementById("roleNotice");
+
+    if (notice) {
+        notice.textContent =
+            roleName === "employer"
+                ? "Employer selected."
+                : "Employee selected.";
+
+        notice.style.display = "block";
+    }
+
+    console.log("Selected role:", selectedRole);
+}
+</script>
 
 <div id="rx"></div>
 <button type="button" class="btn primary" style="width:100%" onclick="doRegister()">Create account</button>
