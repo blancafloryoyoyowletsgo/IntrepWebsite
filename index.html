@@ -47,23 +47,15 @@ header{background:linear-gradient(135deg,#073b5c,#087cae);color:white;padding:15
 <script>
 const DB={a:'bc_accounts',j:'bc_jobs',m:'bc_messages',s:'bc_session',d:'bc_donations'};const CENTER=[6.5007,124.8469];
 // Paste your Firebase Web App config here after creating the project. Leave placeholders until then.
-const FIREBASE_CONFIG=const firebaseConfig = {
-    apiKey: "AIzaSyA6EnmReWoCtT8-5hWrypLGlJC2tmEW3ww",
-    authDomain: "entrepprojecthelpus.firebaseapp.com",
-    projectId: "entrepprojecthelpus",
-    storageBucket: "entrepprojecthelpus.firebasestorage.app",
-    messagingSenderId: "872738410804",
-    appId: "1:872738410804:web:c01eb3612fd4aa3d65d561",
-    measurementId: "G-TZGLZL9ZWK"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
-  const auth = getAuth(app);
-
-  signInAnonymously(auth);
-</script/
-  
+const FIREBASE_CONFIG={
+  apiKey:'AIzaSyA6EnmReWoCtT8-5hWrypLGlJC2tmEW3ww',
+  authDomain:'entrepprojecthelpus.firebaseapp.com',
+  databaseURL:'https://entrepprojecthelpus-default-rtdb.firebaseio.com',
+  projectId:'entrepprojecthelpus',
+  storageBucket:'entrepprojecthelpus.firebasestorage.app',
+  messagingSenderId:'872738410804',
+  appId:'1:872738410804:web:c01eb3612fd4aa3d65d561'
+};
 let firebaseReady=false,fbdb=null;
 const PLANS={free:{name:'FREE',price:0,weekly:3,days:3},premium:{name:'PREMIUM',price:49.99,weekly:7,days:7},pro:{name:'PRO',price:99.99,weekly:Infinity,days:30}};
 let A=read(DB.a,[]),J=read(DB.j,[]),M=read(DB.m,{}),me=null,map=null,markers=null,selectedRole='',pick=null,chatKey='',myCoords=null;
