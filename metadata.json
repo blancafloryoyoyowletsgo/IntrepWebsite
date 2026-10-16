@@ -1,6 +1,0 @@
-{
-  "name": "MarbelBLUE — Blue-Collar Jobs in Koronadal",
-  "description": "Connecting Koronadal City employers with skilled local blue-collar workers. Features interactive job mapping, direct hiring, job applications, work records, ratings, and instant notifications.",
-  "requestFramePermissions": ["geolocation"],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
